@@ -7,9 +7,10 @@ public class UnknownCommandHandler {
 		return commandCount;
 	}
 
-	public static void handle(String command) {
-		System.out.println("["+command+"] : unknown command");
+	public static String handle(String command) {
+		String message = "["+command+"] : unknown command";
 		commandCount++;
+		return message;
 	}
 	
 	
