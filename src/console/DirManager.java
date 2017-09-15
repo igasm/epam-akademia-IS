@@ -3,9 +3,8 @@ package console;
 import java.io.File;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Iterator;
 
-public class DirManager {
+public class DirManager extends CommandExecutor{
 	private Path currentDir;
 
 	public DirManager(Path currentDir) {
@@ -13,7 +12,7 @@ public class DirManager {
 		this.currentDir = currentDir;
 	}
 	
-	public ArrayList<String> listFiles(){
+	private ArrayList<String> listFiles(){
 		ArrayList<String> files = new ArrayList<String>();
 		File file = new File(currentDir.toString());
 		String[] filesTab = file.list();
@@ -21,6 +20,14 @@ public class DirManager {
 			files.add(f);
 		}
 		return files;
+	}
+
+	@Override
+	public void execute() {
+		for(String s : listFiles()) {
+			System.out.println(s);
+		}
+		this.increaseRightCommands();
 	}
 	
 	
