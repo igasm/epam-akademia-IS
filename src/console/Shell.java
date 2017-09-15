@@ -8,13 +8,10 @@ import java.util.Scanner;
 public class Shell {
 	Writer writer;
 	boolean working;
-	int inputs;
 	HashMap<String, CommandExecutor> params;
 	
 	public Shell() {
 		this.writer = new Writer();
-		this.working = true;
-		this.inputs = 0;
 		
 		params = new HashMap<String, CommandExecutor>();
 		params.put("statistics", new StatisticsExecutor());
@@ -35,7 +32,6 @@ public class Shell {
 	}
 	
 	public void parseInput(String input) {
-		this.inputs++;
 		String[] tab = input.split(" ");
 		String key = null;
 		if(tab.length>0) {
